@@ -1,0 +1,3 @@
+0 Gatos
+1 Leones
+2 Panda Rojo
