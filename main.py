@@ -1,7 +1,8 @@
 import os
 import discord
 from discord.ext import commands
-from funciones import IA,ConvertirInt
+from funciones import IARecon, covertirInt
+from dotenv import load_dotenv
 
 intents = discord.Intents.default()
 intents.message_content = True
@@ -13,8 +14,10 @@ async def on_ready():
 
 @bot.command()
 async def imagen(ctx, IA = None):
+    class_name = ""
+    confidence_score = 0.0
     IAs = os.listdir("IAs")
-    IA = ConvertirInt(IA)
+    IA = covertirInt(IA)
     if IA is None or IA < 0 or IA > len(IAs):
         await ctx.send("Por favor, proporciona un número válido para la IA.")
         return
@@ -30,8 +33,9 @@ async def imagen(ctx, IA = None):
         
     image_path = f"temp_{attachment.filename}"
     await attachment.save(image_path)
-    class_name, confidence_score = IA(image_path, IAs[IA-1])
+    
+    class_name, confidence_score = IARecon(image_path, IAs[IA-1])
     os.remove(image_path)
-    await ctx.send(f"{confidence_score}% de que sea un {class_name}")
-
+    await ctx.send(f"La IA {IAs[IA-1]} está {confidence_score}% de que sea un {class_name}")
+load_dotenv()
 bot.run(os.getenv('TOKEN'))

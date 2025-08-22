@@ -5,10 +5,10 @@ import numpy as np
 def covertirInt(value):
     try:
         return int(value)
-    except ValueError:
-        return None
+    except Exception as e:
+        return 1
 
-def IA(rutaIMG, parent):
+def IARecon(rutaIMG, parent):
   # Disable scientific notation for clarity
   np.set_printoptions(suppress=True)
 
