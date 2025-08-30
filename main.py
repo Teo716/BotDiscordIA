@@ -43,11 +43,11 @@ async def gemini(ctx, prompt = "quiero que me respondas con este mensaje: 'para 
     response = llamada_gemini(prompt)
     await ctx.send(response)
 
-@bot.command()
-async def deepseek(ctx, prompt = "quiero que me respondas con este mensaje: 'para la proxima vez no me hagas perder el tiempo'"):
-    print(prompt)
-    response = llamada_deepseek(prompt)
-    await ctx.send(response)
+#@bot.command()
+#async def deepseek(ctx, prompt = "quiero que me respondas con este mensaje: 'para la proxima vez no me hagas perder el tiempo'"):
+#    print(prompt)
+#    response = llamada_deepseek(prompt)
+#    await ctx.send(response)
 
 @bot.command()
 async def ayuda(ctx):
