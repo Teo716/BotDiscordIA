@@ -14,6 +14,21 @@ Base.metadata.create_all(engine)
 Session = sessionmaker(bind=engine)
 session = Session()
 
+class Conversacion(Base):
+    __tablename__ = 'conversaciones'
+    id = Column(Integer, primary_key=True)
+    conversacion_id = Column(String)
+    prompt = Column(String)
+    response = Column(String)
+    server_id = Column(String)
+nueva_conversacion = Conversacion(
+                                conversacion_id="12345",
+                                prompt="Hola, ¿cómo estás?",
+                                response="Estoy bien, gracias por preguntar.", 
+                                server_id="67890"
+                                ) 
+session.add(nueva_conversacion)
+session.commit()
 
 
 
