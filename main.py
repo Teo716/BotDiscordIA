@@ -38,9 +38,9 @@ async def imagen(ctx, IA = None):
     await ctx.send(f"La IA {IAs[IA-1]} está {confidence_score}% de que sea un {class_name}")
 
 @bot.command()
-async def gemini(ctx, prompt = "quiero que me respondas con este mensaje: 'para la proxima vez no me hagas perder el tiempo'"):
+async def gemini(ctx, prompt = "quiero que me respondas con este mensaje: 'para la proxima vez no me hagas perder el tiempo'", id = "default_conversation"):
     print(prompt)
-    response = llamada_gemini(prompt)
+    response = llamada_gemini(prompt,id,str(ctx.guild.id),str(ctx.author.id))
     await ctx.send(response)
 
 #@bot.command()
