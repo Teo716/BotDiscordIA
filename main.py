@@ -1,7 +1,7 @@
 import os
 import discord
 from discord.ext import commands
-from External_IAs import llamada_gemini, llamada_deepseek
+from External_IAs import llamada_gemini
 from funciones import IARecon, covertirInt
 from dotenv import load_dotenv
 
@@ -38,7 +38,7 @@ async def imagen(ctx, IA = None):
     await ctx.send(f"La IA {IAs[IA-1]} está {confidence_score}% de que sea un {class_name}")
 
 @bot.command()
-async def gemini(ctx, prompt = "quiero que me respondas con este mensaje: 'para la proxima vez no me hagas perder el tiempo'", id = "default_conversation"):
+async def gemini(ctx, prompt = "quiero que me respondas con este mensaje: 'para la proxima vez no me hagas perder el tiempo, ni tokens'", id = "default_conversation"):
     print(prompt)
     response = llamada_gemini(prompt,id,str(ctx.guild.id),str(ctx.author.id))
     await ctx.send(response)
